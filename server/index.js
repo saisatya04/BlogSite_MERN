@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const Post = require("./models/Post");
+require('dotenv').config();
 
 const app = express();
 const PORT = 5000;
@@ -10,9 +11,11 @@ const PORT = 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
+const URI = process.env.MONGO_URI;
+
 mongoose
   .connect(
-    "mongodb+srv://saisatyabv23:saispass@cluster0.dysyn.mongodb.net/blogs?retryWrites=true&w=majority&appName=Cluster0",
+    URI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
